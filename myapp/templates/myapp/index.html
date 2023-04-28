@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <title>Hexashop Ecommerce HTML CSS Template</title>
+    <title>DamifiedStores Ecommerce HTML CSS Template</title>
 
 
     <!-- Additional CSS Files -->
@@ -67,7 +67,7 @@ https://templatemo.com/tm-571-hexashop
                                 <ul>
                                     <li><a href="{% url 'aboutlink' %}">About Us</a></li>
                                     <li><a href="{% url 'productslink' %}">Products</a></li>
-                                    <li><a href="{% url 'singlelink' %}">Single Product</a></li>
+                                    <li><a href="">Single Product</a></li>
                                     <li><a href="{% url 'contactlink' %}">Contact Us</a></li>
                                 </ul>
                             </li>
@@ -101,8 +101,8 @@ https://templatemo.com/tm-571-hexashop
                     <div class="left-content">
                         <div class="thumb">
                             <div class="inner-content">
-                                <h4>We Are Hexashop</h4>
-                                <span>Awesome, clean &amp; creative HTML5 Template</span>
+                                <h4>We Are DamifiedStores</h4>
+                                <span>Awesome, clean &amp; Beautiful wears</span>
                                 <div class="main-border-button">
                                     <a href="#">Purchase Now!</a>
                                 </div>
@@ -114,27 +114,29 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-6">
                     <div class="right-content">
                         <div class="row">
+                            {% for i in all_categories %}
                             <div class="col-lg-6">
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
-                                            <h4>Women</h4>
-                                            <span>Best Clothes For Women</span>
+                                            <h4>{{ i.name }}</h4>
+                                            <span>{{ i.description }}</span>
                                         </div>
                                         <div class="hover-content">
                                             <div class="inner">
-                                                <h4>Women</h4>
-                                                <p>Lorem ipsum dolor sit amet, conservisii ctetur adipiscing elit incid.</p>
+                                                <h4>{{ i.name }}</h4>
+                                                <p>{{ i.description }}</p>
                                                 <div class="main-border-button">
                                                     <a href="#">Discover More</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="{% static 'myapp/assets/images/baner-right-image-01.jpg' %}">
+                                        <img src="{{ i.image.url }}">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            {% endfor %}
+                            <!-- <div class="col-lg-6">
                                 <div class="right-first-image">
                                     <div class="thumb">
                                         <div class="inner-content">
@@ -193,7 +195,7 @@ https://templatemo.com/tm-571-hexashop
                                         <img src="{% static 'myapp/assets/images/baner-right-image-04.jpg' %}">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -209,7 +211,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-6">
                     <div class="section-heading">
                         <h2>Men's Latest</h2>
-                        <span>Details to details is what makes Hexashop different from the other themes.</span>
+                        <span>Details to details is what makes DamifiedStores different from the other stores.</span>
                     </div>
                 </div>
             </div>
@@ -219,20 +221,22 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="men-item-carousel">
                         <div class="owl-men-item owl-carousel">
+                            {% for i in mens_product %}
                             <div class="item">
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="{% url 'singlelink' i.pk %}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="{% url 'singlelink' i.pk %}"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="{% url 'singlelink' i.pk %}"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
-                                    <img src="{% static 'myapp/assets/images/men-01.jpg' %}" alt="">
+                                    <img src="{{ i.image.url }}" alt="">
                                 </div>
                                 <div class="down-content">
-                                    <h4>Classic Spring</h4>
-                                    <span>$120.00</span>
+                                    <h4>{{ i.name }}</h4>
+                                    <!--go here to get the currency sign after the span tag https://www.toptal.com/designers/htmlarrows/currency/naira-sign/ -->
+                                    <span>&#8358;{{ i.price }}</span> 
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
@@ -242,13 +246,14 @@ https://templatemo.com/tm-571-hexashop
                                     </ul>
                                 </div>
                             </div>
-                            <div class="item">
+                            {% endfor %}
+                            <!-- <div class="item">
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href=""><i class="fa fa-eye"></i></a></li>
+                                            <li><a href=""><i class="fa fa-star"></i></a></li>
+                                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="{% static 'myapp/assets/images/men-02.jpg' %}" alt="">
@@ -269,9 +274,9 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href=""><i class="fa fa-eye"></i></a></li>
+                                            <li><a href=""><i class="fa fa-star"></i></a></li>
+                                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="{% static 'myapp/assets/images/men-03.jpg' %}" alt="">
@@ -292,9 +297,9 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href=""><i class="fa fa-eye"></i></a></li>
+                                            <li><a href=""><i class="fa fa-star"></i></a></li>
+                                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="{% static 'myapp/assets/images/men-01.jpg' %}" alt="">
@@ -310,7 +315,7 @@ https://templatemo.com/tm-571-hexashop
                                         <li><i class="fa fa-star"></i></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -326,7 +331,7 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-6">
                     <div class="section-heading">
                         <h2>Women's Latest</h2>
-                        <span>Details to details is what makes Hexashop different from the other themes.</span>
+                        <span>Details to details is what makes Damifiedstores different from the other stores.</span>
                     </div>
                 </div>
             </div>
@@ -336,20 +341,21 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="women-item-carousel">
                         <div class="owl-women-item owl-carousel">
+                            {% for i in womens_product %}
                             <div class="item">
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="{% url 'singlelink' i.pk %}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="{% url 'singlelink' i.pk %}"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="{% url 'singlelink' i.pk %}"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
-                                    <img src="{% static 'myapp/assets/images/women-01.jpg' %}" alt="">
+                                    <img src="{{ i.image.url }}" alt="">
                                 </div>
                                 <div class="down-content">
-                                    <h4>New Green Jacket</h4>
-                                    <span>$75.00</span>
+                                    <h4>{{ i.name }}</h4>
+                                    <span>&#8358;{{ i.price }}</span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
@@ -359,13 +365,14 @@ https://templatemo.com/tm-571-hexashop
                                     </ul>
                                 </div>
                             </div>
-                            <div class="item">
+                            {% endfor %}
+                            <!-- <div class="item">
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href=""><i class="fa fa-eye"></i></a></li>
+                                            <li><a href=""><i class="fa fa-star"></i></a></li>
+                                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="{% static 'myapp/assets/images/women-02.jpg' %}" alt="">
@@ -386,9 +393,9 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href=""><i class="fa fa-eye"></i></a></li>
+                                            <li><a href=""><i class="fa fa-star"></i></a></li>
+                                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="{% static 'myapp/assets/images/women-03.jpg' %}" alt="">
@@ -409,9 +416,9 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href=""><i class="fa fa-eye"></i></a></li>
+                                            <li><a href=""><i class="fa fa-star"></i></a></li>
+                                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="{% static 'myapp/assets/images/women-01.jpg' %}" alt="">
@@ -427,7 +434,7 @@ https://templatemo.com/tm-571-hexashop
                                         <li><i class="fa fa-star"></i></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -453,20 +460,21 @@ https://templatemo.com/tm-571-hexashop
                 <div class="col-lg-12">
                     <div class="kid-item-carousel">
                         <div class="owl-kid-item owl-carousel">
+                            {% for i in kids_product %}
                             <div class="item">
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href="{% url 'singlelink' i.pk %}"><i class="fa fa-eye"></i></a></li>
+                                            <li><a href="{% url 'singlelink' i.pk %}"><i class="fa fa-star"></i></a></li>
+                                            <li><a href="{% url 'singlelink' i.pk %}"><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
-                                    <img src="{% static 'myapp/assets/images/kid-01.jpg' %}" alt="">
+                                    <img src="{{ i.image.url }}" alt="">
                                 </div>
                                 <div class="down-content">
-                                    <h4>School Collection</h4>
-                                    <span>$80.00</span>
+                                    <h4>{{ i.name }}</h4>
+                                    <span>&#8358;{{ i.price }}</span>
                                     <ul class="stars">
                                         <li><i class="fa fa-star"></i></li>
                                         <li><i class="fa fa-star"></i></li>
@@ -476,13 +484,14 @@ https://templatemo.com/tm-571-hexashop
                                     </ul>
                                 </div>
                             </div>
-                            <div class="item">
+                            {% endfor %}
+                            <!-- <div class="item">
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href=""><i class="fa fa-eye"></i></a></li>
+                                            <li><a href=""><i class="fa fa-star"></i></a></li>
+                                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="{% static 'myapp/assets/images/kid-02.jpg' %}" alt="">
@@ -503,9 +512,9 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href=""><i class="fa fa-eye"></i></a></li>
+                                            <li><a href=""><i class="fa fa-star"></i></a></li>
+                                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="{% static 'myapp/assets/images/kid-03.jpg' %}" alt="">
@@ -526,9 +535,9 @@ https://templatemo.com/tm-571-hexashop
                                 <div class="thumb">
                                     <div class="hover-content">
                                         <ul>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-eye"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-star"></i></a></li>
-                                            <li><a href="{% url 'singlelink' %}"><i class="fa fa-shopping-cart"></i></a></li>
+                                            <li><a href=""><i class="fa fa-eye"></i></a></li>
+                                            <li><a href=""><i class="fa fa-star"></i></a></li>
+                                            <li><a href=""><i class="fa fa-shopping-cart"></i></a></li>
                                         </ul>
                                     </div>
                                     <img src="{% static 'myapp/assets/images/kid-01.jpg' %}" alt="">
@@ -544,7 +553,7 @@ https://templatemo.com/tm-571-hexashop
                                         <li><i class="fa fa-star"></i></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -698,7 +707,8 @@ https://templatemo.com/tm-571-hexashop
                         <h2>By Subscribing To Our Newsletter You Can Get 30% Off</h2>
                         <span>Details to details is what makes Hexashop different from the other themes.</span>
                     </div>
-                    <form id="subscribe" action="" method="get">
+                    <form id="subscribe" action="" method="post">
+                        {% csrf_token %}
                         <div class="row">
                           <div class="col-lg-5">
                             <fieldset>

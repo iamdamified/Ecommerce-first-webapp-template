@@ -67,7 +67,7 @@ https://templatemo.com/tm-571-hexashop
                                 <ul>
                                     <li><a href="{% url 'aboutlink' %}">About Us</a></li>
                                     <li><a href="{% url 'productslink' %}">Products</a></li>
-                                    <li><a href="{% url 'singlelink' %}">Single Product</a></li>
+                                    <li><a href="">Single Product</a></li>
                                     <li><a href="{% url 'contactlink' %}">Contact Us</a></li>
                                 </ul>
                             </li>
@@ -115,14 +115,14 @@ https://templatemo.com/tm-571-hexashop
             <div class="row">
                 <div class="col-lg-8">
                 <div class="left-images">
-                    <img src="{% static 'myapp/assets/images/single-product-01.jpg' %}" alt="">
-                    <img src="{% static 'myapp/assets/images/single-product-02.jpg' %}" alt="">
+                    <!-- <img src="{% static 'myapp/assets/images/single-product-01.jpg' %}" alt=""> -->
+                    <img src="{{ oneproduct.image.url }}" alt="">
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="right-content">
-                    <h4>New Green Jacket</h4>
-                    <span class="price">$75.00</span>
+                    <h4>{{ oneproduct.name }}</h4>
+                    <span class="price">${{ oneproduct.price }}</span>
                     <ul class="stars">
                         <li><i class="fa fa-star"></i></li>
                         <li><i class="fa fa-star"></i></li>

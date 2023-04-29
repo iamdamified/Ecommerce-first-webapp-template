@@ -627,18 +627,20 @@ https://templatemo.com/tm-571-hexashop
         </div>
         <div class="container">
             <div class="row images">
+                {% for i in social_images %}
                 <div class="col-2">
                     <div class="thumb">
                         <div class="icon">
                             <a href="http://instagram.com">
-                                <h6>Fashion</h6>
+                                <h6>{{ i.description }}</h6>
                                 <i class="fa fa-instagram"></i>
                             </a>
                         </div>
-                        <img src="{% static 'myapp/assets/images/instagram-01.jpg' %}" alt="">
+                        <img src="{{ i.image.url }}" alt="">
                     </div>
                 </div>
-                <div class="col-2">
+                {% endfor %}
+                <!-- <div class="col-2">
                     <div class="thumb">
                         <div class="icon">
                             <a href="http://instagram.com">
@@ -692,7 +694,7 @@ https://templatemo.com/tm-571-hexashop
                         </div>
                         <img src="{% static 'myapp/assets/images/instagram-06.jpg' %}" alt="">
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

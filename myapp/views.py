@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Category, Product, Subscriber, Contact
+from .models import Category, Product, Subscriber, Contact, Social
 from .forms import ContactForm
 
 # Create your views here.
@@ -13,12 +13,14 @@ def home_page(request):
         mens_products = Product.objects.filter(category__name="MEN") # This helps the database to recognize and use the Instance name and not its default ID
         womens_products = Product.objects.filter(category__name="WOMEN")
         kids_products = Product.objects.filter(category__name="kids")
+        social_images = Social.objects.all()
 
         context = {
             'all_categories': all_categories,
             'mens_product': mens_products,
             'womens_product': womens_products,
-            'kids_product': kids_products
+            'kids_product': kids_products,
+            'social_images': social_images
 
         }
     # Bound instance

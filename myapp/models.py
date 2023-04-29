@@ -25,6 +25,17 @@ class Product(models.Model):
     def __str__(self):
         return self.name
     
+
+class Social(models.Model):
+    image = models.ImageField(upload_to="onlysocial_images")
+    description = models.CharField(max_length=20)
+    
+
+    def __str__(self):
+        return self.description
+    
+
+    
 class Subscriber(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()

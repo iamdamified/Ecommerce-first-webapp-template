@@ -6,6 +6,8 @@ from .models import *
 admin.site.register(Category)
 admin.site.register(Product)
 admin.site.register(Subscriber)
+admin.site.register(Social)
+
 
 
 #REgistration of a model such that the model displays tabular data and n number of fields in the Admin Database by calling admin.ModelAdmin
